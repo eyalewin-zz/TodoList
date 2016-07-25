@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Main Page";
+}
+
+@model Clarizen.Models.CTask
+
+@{
+    var r = new Random();
+    var randomNum = r.Next();
+}
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="mainContainer">
+        <h1 class="control-label">To Dos</h1>
+        <h5 class="addNewTask control-label elementAsLink" style="display:none">Add New Task</h5>
+        <div class="taskContainer col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+    </div>
+    @{Html.RenderPartial("_AddNewTaskPartial", Model);}
+</div>
+<script src="~/Scripts/Clarizen/logic.js?v=@randomNum"></script>
+<script src="~/Scripts/Clarizen/services.js?v=@randomNum"></script>
+<script src="~/Scripts/Clarizen/main.js?v=@randomNum"></script>
+
