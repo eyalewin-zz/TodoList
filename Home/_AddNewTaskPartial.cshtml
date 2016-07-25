@@ -1,0 +1,44 @@
+﻿@model Clarizen.Models.CTask
+
+@{
+    var r = new Random();
+    var randomNum = r.Next();
+}
+<div>
+    <link href="~/Content/Clarizen/NewTask/newTask.css?v=@randomNum" rel="stylesheet" />
+    <div id="addNewTaskModal" class="clarizenModal modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add New Task</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                <label class="control-label">Name:</label><span class="mandatoryClass"> *</span>
+                                <input id="newTaskName" type="text" class="form-control" />
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                <label class="control-label">Owner:</label><span class="mandatoryClass"> *</span>
+                                <input id="newTaskOwner" type="text" class="form-control" />
+                            </div>
+                            <div class="childCheckBox col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                <input id="subTaskCheckBox" type="checkbox" />
+                                <label class="control-label">Create as child</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                            <button id="addNewTaskModalOKBtn" class="modalBtns modalOkBtn">OK</button>
+                            &nbsp;&nbsp;
+                            <button id="addNewTaskCancelBtn" class="modalBtns modalCancelBtn">CANCEL</button>
+                        </div>
+                    </div><!-- /body-row-->
+                </div><!-- /.modal-body -->
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    @Html.Hidden("CTaskObj", Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model, Newtonsoft.Json.Formatting.Indented)))
+    <script src="~/Scripts/Clarizen/NewTask/newTask.js?v=@randomNum"></script>
+</div>
